@@ -2,23 +2,39 @@
 pragma solidity ^0.8.0;
 
 contract Balance {
-    // 用 mapping 记录每个地址的余额
-    mapping(address => uint256) public balances;
+    // 合约拥有者
+    address public owner;
 
-    // 存款函数，payable 让函数能接收 ETH
+    // 事件
+    event Deposited(address indexed user, uint256 amount);
+    event Withdrawn(address indexed to, uint256 amount);
+
+    // 构造函数：部署合约时设置 owner
+    constructor() {
+        owner = msg.sender;
+    }
+
+    // 修饰符：只有 owner 才能操作
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not the contract owner");
+        _;
+    }
+
+    // 存款函数（任何人都能存）
     function deposit() public payable {
-        balances[msg.sender] += msg.value;
+        require(msg.value > 0, "Deposit must be greater than 0");
+        emit Deposited(msg.sender, msg.value);
     }
 
-    // 取款函数
-    function withdraw(uint256 amount) public {
-        require(balances[msg.sender] >= amount, "Insufficient balance");
-        balances[msg.sender] -= amount;
-        payable(msg.sender).transfer(amount);
+    // 取款函数（只有 owner 能提取）
+    function withdraw(address payable to, uint256 amount) public onlyOwner {
+        require(address(this).balance >= amount, "Insufficient contract balance");
+        to.transfer(amount);
+        emit Withdrawn(to, amount);
     }
 
-    // 查询自己余额
-    function getBalance() public view returns (uint256) {
-        return balances[msg.sender];
+    // 查询合约余额（所有存款总额）
+    function getContractBalance() public view returns (uint256) {
+        return address(this).balance;
     }
 }
