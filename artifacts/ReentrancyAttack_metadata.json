@@ -9,53 +9,49 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "_target",
 						"type": "address"
 					}
 				],
-				"name": "balances",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
+				"stateMutability": "nonpayable",
+				"type": "constructor"
 			},
 			{
 				"inputs": [],
-				"name": "deposit",
+				"name": "attack",
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "getContractBalance",
+				"name": "owner",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "address",
 						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "target",
+				"outputs": [
 					{
-						"internalType": "uint256",
-						"name": "_amount",
-						"type": "uint256"
+						"internalType": "contract IBalance",
+						"name": "",
+						"type": "address"
 					}
 				],
-				"name": "withdraw",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -71,7 +67,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Balancelou.sol": "Balance"
+			"contracts/ReentrancyAttack.sol": "ReentrancyAttack"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -85,12 +81,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Balancelou.sol": {
-			"keccak256": "0x9be4a8933a3636bb7f277bac11e734890ba406eb7e6a4ae50a47c3890fd32f4b",
+		"contracts/ReentrancyAttack.sol": {
+			"keccak256": "0xff1c168987e3b95720899184cff62b38f02b956eff0f64a36573e6fd6d8cac63",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d9c1ddd148cb78a6f119306fcdb08450d29869f8fec30ec849e483df474b3a60",
-				"dweb:/ipfs/QmT6nrGsZU2QaeuWEAFmRJkh5pYuGpy9nE6ozyNpiCEGhV"
+				"bzz-raw://d0b9f971c771fd1dfe15c80d4ee4214f1174c8912c165c64a0bc7e832252fcdf",
+				"dweb:/ipfs/QmRK5YYBHtNNEhte3AimRKLp5P1cPwtevhX4MLzfV1Mvh7"
 			]
 		}
 	},

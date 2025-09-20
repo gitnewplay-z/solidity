@@ -1,21 +1,27 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract BalanceVulnerable {
+contract Balance {
     mapping(address => uint256) public balances;
 
-    function deposit() external payable {
+    // 存钱
+    function deposit() public payable {
         balances[msg.sender] += msg.value;
     }
 
-    // Vulnerable: external call happens before state update
-    function withdraw() external {
-        uint256 bal = balances[msg.sender];
-        require(bal > 0, "No balance");
-        // send Ether (unsafe pattern)
-        (bool ok, ) = msg.sender.call{value: bal}("");
-        require(ok, "Transfer failed");
-        // state update after external call -> reentrancy possible
-        balances[msg.sender] = 0;
+    // 提现
+    function withdraw(uint256 _amount) public {
+        require(balances[msg.sender] >= _amount, "Insufficient balance");
+
+        // ⚠️ 问题点：先发送ETH，再更新余额
+        (bool sent, ) = msg.sender.call{value: _amount}("");
+        require(sent, "Failed to send Ether");
+
+        balances[msg.sender] -= _amount;
+    }
+
+    // 获取合约余额
+    function getContractBalance() public view returns (uint) {
+        return address(this).balance;
     }
 }

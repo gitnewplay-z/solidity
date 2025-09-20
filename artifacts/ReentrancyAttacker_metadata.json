@@ -9,11 +9,23 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "_balanceAddress",
 						"type": "address"
 					}
 				],
-				"name": "balances",
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "attack",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "attackCount",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -26,19 +38,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "deposit",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getContractBalance",
+				"name": "balanceContract",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "contract IBalance",
 						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -48,14 +53,31 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_amount",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
-				"name": "withdraw",
+				"name": "fundAttacker",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAttackerBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -71,7 +93,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Balancelou.sol": "Balance"
+			"contracts/ReentrancyAttacker.sol": "ReentrancyAttacker"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -85,12 +107,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Balancelou.sol": {
-			"keccak256": "0x9be4a8933a3636bb7f277bac11e734890ba406eb7e6a4ae50a47c3890fd32f4b",
+		"contracts/ReentrancyAttacker.sol": {
+			"keccak256": "0x20e9d3f13dfd1848f4aac79aeee91b443dcfd4e340746ac202c40050315ce897",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d9c1ddd148cb78a6f119306fcdb08450d29869f8fec30ec849e483df474b3a60",
-				"dweb:/ipfs/QmT6nrGsZU2QaeuWEAFmRJkh5pYuGpy9nE6ozyNpiCEGhV"
+				"bzz-raw://8d83782b67d018bc3625538ceea3246cfed8630dc18761a824d8b4d0fa6056c6",
+				"dweb:/ipfs/QmZb7PP39Ht5ZcUnwj5XH6cCzwptmLMZsyT8ky9cLt7HDF"
 			]
 		}
 	},

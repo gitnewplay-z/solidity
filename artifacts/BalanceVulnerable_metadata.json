@@ -6,14 +6,58 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": true,
 						"internalType": "address",
-						"name": "",
+						"name": "user",
 						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
 					}
 				],
-				"name": "balances",
+				"name": "Deposited",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Withdrawn",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getContractBalance",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -26,13 +70,30 @@
 			},
 			{
 				"inputs": [],
-				"name": "deposit",
-				"outputs": [],
-				"stateMutability": "payable",
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
 				"name": "withdraw",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -52,7 +113,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Balancev.sol": "BalanceVulnerable"
+			"contracts/BalanceVulnerable.sol": "BalanceVulnerable"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -66,12 +127,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Balancev.sol": {
-			"keccak256": "0xdff816aceb53ad167d5b076a53f64c47c7bd35ad5f103f3b192638b9c96c9e80",
+		"contracts/BalanceVulnerable.sol": {
+			"keccak256": "0xb8798d6081c0feaaaa1b8c49b8d66398f0483706ffb4dbb6dfaf82894cbc79e2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://854103731f7bce848f8feb03d58c8b08b281b206d7ab68364c202ab77bd75526",
-				"dweb:/ipfs/QmSJ9RnyHj55bt58nAbqy2fYjv5bct1oB9wEppPUEh1QqE"
+				"bzz-raw://a0df563714dbdf7cca85c3887b729ee5f5313f848e250ccd3ddd0925d6d29a49",
+				"dweb:/ipfs/QmNn3RwjtMr5kHZz27FfjnoRYznNcdwymNBW6nDqGUVLBc"
 			]
 		}
 	},
